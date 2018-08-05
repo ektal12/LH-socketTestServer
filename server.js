@@ -24,3 +24,15 @@ var port = process.env.PORT || 3001;
 http.listen(port, function(){
    console.log('listening in http://localhost:' + port);
 });
+
+
+const translate = require('google-translate-api');
+
+translate('Mes amis vont avoir un bébé la semaine prochaine.', {to: 'en'}).then(res => {
+    console.log(res.text);
+    //=> I speak English
+    console.log(res.from.language.iso);
+    //=> nl
+}).catch(err => {
+    console.error(err);
+});
